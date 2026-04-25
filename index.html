@@ -7,6 +7,72 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
+  /* ========== SPLASH SCREEN ========== */
+  #splash-screen {
+    position: fixed;
+    inset: 0;
+    background: #1a1a1a;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #splash-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .splash-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    color: #e8241a;
+    letter-spacing: -2px;
+    animation: splashPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  }
+  .splash-logo span { color: #ffffff; }
+  .splash-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: splashFade 0.8s ease 0.3s both;
+  }
+  .splash-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 10px;
+    animation: splashFade 0.8s ease 0.4s both;
+  }
+  .splash-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #e8241a;
+    border-radius: 99px;
+    animation: splashFill 2.6s ease 0.4s forwards;
+  }
+  @keyframes splashPop {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes splashFade {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes splashFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+
+  /* ========== ORIGINAL STYLES ========== */
   :root {
     --primary: #e8241a;
     --dark: #1a1a1a;
@@ -43,16 +109,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 40px;
+    padding: 6px 40px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     position: sticky; top: 0; z-index: 100;
   }
   .logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 26px;
+    font-size: 34px;
     color: var(--primary);
     letter-spacing: -1px;
+    line-height: 1;
   }
   .logo span { color: var(--dark); }
   .nav-links { display: flex; gap: 28px; list-style: none; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; }
@@ -461,16 +528,24 @@
     .footer-grid { grid-template-columns: 1fr 1fr; }
     section { padding: 50px 20px; }
     .topbar { padding: 8px 20px; font-size: 12px; }
+    .logo { font-size: 28px; }
   }
 </style>
 </head>
 <body>
 
+<!-- SPLASH SCREEN -->
+<div id="splash-screen">
+  <div class="splash-logo">ADIGIS<span>PARK</span></div>
+  <div class="splash-tagline">Your Growth · Our Mission</div>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+</div>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="tb-left">
-    <span><i class="fas fa-envelope"></i>info@ipopi.in</span>
-    <span><i class="fas fa-map-marker-alt"></i>Mysore & Bangalore, Karnataka</span>
+    <span><i class="fas fa-envelope"></i>adigispark@gmail.com</span>
+    <span><i class="fas fa-map-marker-alt"></i>karnataka</span>
   </div>
   <div class="tb-right">
     <a href="tel:+919663143035"><i class="fas fa-phone"></i>+91 96631 43035</a>
@@ -480,7 +555,9 @@
 
 <!-- NAVBAR -->
 <nav>
-  <div class="logo">ADIGIS<span>PARK</span></div>
+  <div class="logo">
+    <img src="IMG_0138.PNG" alt="Adigispark Logo" style="height:120px; width:auto; display:block;" />
+  </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#why-us">Why Us</a></li>
@@ -494,29 +571,29 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">7+ Years of Excellence</div>
-    <h1>Leading <span>Digital Marketing</span> Agency in Mysore & Bangalore</h1>
-    <p>We help 300+ clients #dothat through Performance Digital Marketing. Guaranteed ROI through lead gen campaigns, SEO, social media, and sales-driven websites.</p>
+    <div class="hero-badge">2+ Years of Excellence</div>
+    <h1>Leading <span>Digital Marketing</span> Company</h1>
+    <p>we helped 15+ clients #dothat through peformence DigitalMarkating guaranteed ROI through lead gen campaigns,SEO,social media and sales driven websites.</p>
     <div class="hero-btns">
       <a href="tel:+919663143035" class="btn-primary"><i class="fas fa-phone"></i> Contact Now</a>
       <a href="https://wa.me/919663143035" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">300+</div>
+        <div class="stat-num">15+</div>
         <div class="stat-label">Happy Clients</div>
       </div>
       <div class="stat">
-        <div class="stat-num">250+</div>
-        <div class="stat-label">Dealerships Pan India</div>
+        <div class="stat-num"></div>
+        <div class="stat-label"></div>
       </div>
       <div class="stat">
-        <div class="stat-num">7+</div>
+        <div class="stat-num">2+</div>
         <div class="stat-label">Years Experience</div>
       </div>
       <div class="stat">
-        <div class="stat-num">20+</div>
-        <div class="stat-label">Brands Served</div>
+        <div class="stat-num"></div>
+        <div class="stat-label"></div>
       </div>
     </div>
   </div>
@@ -545,22 +622,27 @@
     <h2>360° Performance <span>Digital Marketing</span></h2>
     <p>We generate highly influencing campaigns to reach the right people on Social Media with ideal Call To Actions to deliver results!</p>
   </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon"><i class="fas fa-search"></i></div>
-      <h3>SEO Optimization</h3>
-      <p>Your Google Ads will be on the top, yet at an optimized Cost Per Lead. We ensure your website ranks at the top of SERP for maximum organic traffic.</p>
-    </div>
-    <div class="service-card">
+  
+      <div class="service-card">
       <div class="service-icon"><i class="fab fa-facebook-f"></i></div>
       <h3>Social Media Marketing</h3>
-      <p>We generate highly influencing campaigns on Facebook, Instagram, and other platforms to reach the right audience with powerful Call To Actions.</p>
+      <p>we build powerful social campaigns that reach the right people at right time , we are expert in "reels" economy--utilizing short form  video in IG and FB to maximize your brand's visibility and engagement.</p>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-ad"></i></div>
       <h3>Google Ads / PPC</h3>
       <p>Lead gen campaigns through Google Network with definite ROI through guaranteed conversions. It's not how many see your ad — it's WHO sees it!</p>
     </div>
+  
+  
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-search"></i></div>
+      <h3>SEO Optimization</h3>
+      <p>Your Google Ads will be on the top, yet at an optimized Cost Per Lead. We ensure your website ranks at the top of SERP for maximum organic traffic.</p>
+    </div>
+
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
       <h3>Website Development</h3>
@@ -583,8 +665,8 @@
 <section class="why-us" id="why-us">
   <div class="section-header">
     <div class="section-tag">Why Choose Us</div>
-    <h2>We Are Your <span>One-Stop Shop</span> for Digital Marketing</h2>
-    <p>Ipopi Ads is a leading digital marketing agency based in Mysore and Bangalore, specializing in delivering measurable results for your business.</p>
+    <h2>Ignite your  <span>Digital Growth</span> at ADIGISPARK</h2>
+    <p>ADigiSpark is a leading performance marketing agency dedicated to transforming your online presence into a high-converting revenue engine. We bridge the gap between creative storytelling and data-driven strategy to deliver measurable growth for businesses.</p>
   </div>
   <div class="why-grid">
     <div class="why-img"></div>
@@ -621,7 +703,7 @@
         <div class="why-dot"><i class="fas fa-trophy"></i></div>
         <div>
           <h4>Proven Track Record</h4>
-          <p>7+ years experience across 20+ brands and 250+ dealerships pan India. 300+ clients have trusted us to grow their business.</p>
+          <p>2+ years experience , +15 clients</p>
         </div>
       </div>
     </div>
@@ -636,19 +718,19 @@
   </div>
   <div class="numbers-grid">
     <div class="num-card">
-      <div class="num">300<span class="num-plus">+</span></div>
+      <div class="num">15<span class="num-plus">+</span></div>
       <p>Happy Clients Nationwide</p>
     </div>
     <div class="num-card">
-      <div class="num">250<span class="num-plus">+</span></div>
+      <div class="num"><span class="num-plus">+</span></div>
       <p>Dealerships Pan India</p>
     </div>
     <div class="num-card">
-      <div class="num">7<span class="num-plus">+</span></div>
+      <div class="num">2<span class="num-plus">+</span></div>
       <p>Years of Excellence</p>
     </div>
     <div class="num-card">
-      <div class="num">20<span class="num-plus">+</span></div>
+      <div class="num"><span class="num-plus">+</span></div>
       <p>Brands Served</p>
     </div>
   </div>
@@ -661,6 +743,7 @@
     <h2>Industries We <span>Serve</span></h2>
     <p>We bring specialized expertise across a wide range of industries, delivering customized digital marketing strategies for each sector.</p>
   </div>
+  <div class="ind-card"><i class="fas fa-shopping-bag"></i><span>TEXTILE BUSINESSES</span></div>
   <div class="industries-grid">
     <div class="ind-card"><i class="fas fa-car"></i><span>Automotive</span></div>
     <div class="ind-card"><i class="fas fa-building"></i><span>Real Estate</span></div>
@@ -683,7 +766,7 @@
   <div class="testi-grid">
     <div class="testi-card">
       <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-      <p>Ipopi Ads transformed our dealership's digital presence. Our leads increased 3x within the first 3 months. Their team understands the automotive market deeply.</p>
+      <p></p>
       <div class="testi-author">
         <div class="testi-avatar">RK</div>
         <div><div class="testi-name">Rajesh Kumar</div><div class="testi-role">Auto Dealership, Mysore</div></div>
@@ -691,18 +774,18 @@
     </div>
     <div class="testi-card">
       <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-      <p>The ROI from Google Ads campaigns run by Ipopi has been outstanding. They know exactly how to target the right buyers at the right time. Highly recommended!</p>
+      <p></p>
       <div class="testi-author">
         <div class="testi-avatar">PM</div>
-        <div><div class="testi-name">Priya Mehta</div><div class="testi-role">Real Estate Developer, Bangalore</div></div>
+        <div><div class="testi-name"></div><div class="testi-role"></div></div>
       </div>
     </div>
     <div class="testi-card">
       <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-      <p>Our hospital's patient inquiries doubled after partnering with Ipopi. Their healthcare digital marketing expertise is unmatched. Great team, great results!</p>
+      <p></p>
       <div class="testi-author">
         <div class="testi-avatar">AS</div>
-        <div><div class="testi-name">Dr. Anand Sharma</div><div class="testi-role">Healthcare, Bangalore</div></div>
+        <div><div class="testi-name"></div><div class="testi-role"></div></div>
       </div>
     </div>
   </div>
@@ -718,11 +801,11 @@
   <div class="contact-grid">
     <div class="contact-info">
       <h2>Let's <span>Talk Business</span></h2>
-      <p>We're based in Mysore and Bangalore. Reach out to us via call, WhatsApp, or fill in the form and we'll get back to you within 24 hours.</p>
+      <p>We're based in kollegala. Reach out to us via call, WhatsApp, or fill in the form and we'll get back to you within 24 hours.</p>
       <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+919663143035">+91 96631 43035</a></div>
       <div class="contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/919663143035" target="_blank">Chat on WhatsApp</a></div>
-      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:info@ipopi.in">info@ipopi.in</a></div>
-      <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span style="color:#ddd;font-size:14px">5490, Second Floor, High Tension Double Rd, Vijay Nagar 2nd Stage, Mysore - 570017</span></div>
+      <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:info@ipopi.in">info@adigisparks@gmail.com</a></div>
+      <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span style="color:#ddd;font-size:14px">kollegala</span></div>
       <div class="contact-btns">
         <a href="tel:+919663143035" class="contact-btn btn-call"><i class="fas fa-phone"></i> Call +91 96631 43035</a>
         <a href="https://wa.me/919663143035" target="_blank" class="contact-btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
@@ -758,7 +841,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <span class="logo">adigispark<span>your growth our mission</span></span>
-      <p>Leading Digital Marketing Agency in Mysore & Bangalore. 7+ years of experience delivering guaranteed ROI for 300+ clients across India.</p>
+      <p>Leading Digital Marketing Agency . 2+ years of experience delivering guaranteed ROI </p>
       <div class="footer-social">
         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -802,7 +885,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 Ipopi Ads. All rights reserved. | Designed & Developed by Ipopi Ads | Mysore & Bangalore</p>
+    <p>© 2026 ADIGISPARK. All rights reserved. | Designed & ADIGISPARK | KOLLEGALA</p>
   </div>
 </footer>
 
@@ -811,5 +894,19 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<script>
+  // Hide splash screen after 3 seconds with smooth fade-out
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var splash = document.getElementById('splash-screen');
+      splash.classList.add('hide');
+      // Remove from DOM after transition completes
+      setTimeout(function () {
+        splash.style.display = 'none';
+      }, 650);
+    }, 3000);
+  });
+</script>
+
 </body>
-</html>
+  </html>
